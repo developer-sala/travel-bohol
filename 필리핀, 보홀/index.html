@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>보홀(Bohol)</title>
+    <link href="title.jpg" rel="shortcut icon" type="image/x-icon" />
+    <style>
+      /* 폰트체 */
+      @font-face {
+        font-family: "호빵체";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "도현체";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      /* 부트스트랩 */
+
+      /* 스타일 적용 */
+      body {
+        margin: 0;
+      }
+      .container {
+        display: grid;
+        grid-gap: 10px;
+        height: 100vh;
+        grid-template-columns: 300px 1fr 300px;
+        grid-template-rows: 100px 60px 150px 1fr 150px 50px;
+        grid-template-areas:
+          "header_left header header_right"
+          "nav nav nav"
+          "menu main top"
+          "menu main aside"
+          "menu_bottom main bottom"
+          "footer footer footer";
+      }
+      .container div {
+        background-color: rgba(246, 242, 242, 0.951);
+        padding: 20px;
+        border: 1px solid black;
+      }
+      .header {
+        grid-area: header;
+        text-align: center;
+        line-height: 60px;
+      }
+      h1 {
+        font-size: 40px;
+      }
+      h1,
+      h2 {
+        display: inline;
+        font-family: "호빵체";
+      }
+      .header_left {
+        grid-area: header_left;
+        font-family: "도현체";
+        line-height: 15px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .before {
+        background-color: black;
+        height: 25px;
+        color: white;
+        padding: 5px;
+      }
+      .before:hover {
+        background-color: rgb(66, 66, 66);
+        transition: 1s;
+      }
+      .header_right {
+        grid-area: header_right;
+        text-align: center;
+        line-height: 60px;
+        font-family: "도현체";
+      }
+      .header_right:hover {
+        background-image: url("please.png");
+      }
+      .nav {
+        grid-area: nav;
+        text-align: center;
+      }
+      span {
+        margin: 70px;
+        text-align: center;
+      }
+      span:hover {
+        cursor: pointer;
+        color: hotpink;
+      }
+      .menu {
+        grid-area: menu;
+      }
+      .score,
+      .score_best,
+      .score_worst {
+        border: 2px solid black;
+        width: 110px;
+        height: 50px;
+        margin: 20px;
+        border-radius: 0 5px 5px 0;
+        line-height: 30px;
+      }
+      .score {
+        animation-name: score;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes score {
+        0% {
+          width: 110px;
+        }
+        50% {
+          width: 140px;
+        }
+        100% {
+          width: 180px;
+        }
+      }
+      .score_best {
+        background-color: pink;
+        animation-name: score_best;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes score_best {
+        0% {
+          width: 110px;
+        }
+        50% {
+          width: 140px;
+        }
+        100% {
+          width: 240px;
+        }
+      }
+      .menu_bottom {
+        grid-area: menu_bottom;
+      }
+      .menu_bottom {
+        position: relative;
+        padding-bottom: 56.25%;
+      }
+      iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .main {
+        grid-area: main;
+      }
+      .articles {
+        font-family: "호빵체";
+        margin-left: 35px;
+        font-size: 20px;
+        text-align: left;
+      }
+      .articles:hover {
+        font-size: 25px;
+        color: red;
+      }
+      .main_news1,
+      .main_news2 {
+        display: inline-block;
+        width: 300px;
+        margin: 25px;
+        border-radius: 20px 0 20px 0;
+      }
+      .main_news1 {
+        margin-left: 45px;
+      }
+      .main_news1:hover {
+        text-decoration: underline;
+        background-image: url("material.png");
+        background-size: contain;
+      }
+      .main_news2:hover {
+        text-decoration: underline;
+        background-image: url("material.png");
+        background-size: contain;
+      }
+      hr {
+        border: 1px dotted black;
+      }
+      .a {
+        cursor: pointer;
+      }
+      .cat_img,
+      .monkey_img,
+      .dog_img,
+      .firefly_img,
+      .food_img {
+        display: none;
+      }
+      .a:hover .cat_img {
+        display: block;
+        display: left;
+        margin-bottom: 150px;
+      }
+      .b:hover .monkey_img {
+        display: block;
+        display: left;
+        margin-bottom: 150px;
+      }
+      .c:hover .dog_img {
+        display: block;
+        display: left;
+        margin-bottom: 150px;
+      }
+      .d:hover .firefly_img {
+        display: block;
+        display: left;
+        margin-bottom: 150px;
+      }
+      .e:hover .food_img {
+        display: block;
+        display: left;
+        margin-bottom: 150px;
+      }
+
+      .top {
+        grid-area: top;
+        font-family: "도현체";
+        line-height: 28px;
+      }
+      .aside {
+        grid-area: aside;
+      }
+      .bottom {
+        grid-area: bottom;
+        line-height: 28px;
+      }
+      .footer {
+        grid-area: footer;
+        text-align: center;
+      }
+
+      .a,
+      .b,
+      .c,
+      .d,
+      .e {
+        display: inline-block;
+        height: 20px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .aside {
+        background-image: url("lovebohol.jpg");
+        background-size: contain;
+      }
+
+      .sr {
+        display: inline;
+        display: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER 부분 -->
+      <div class="header">
+        <h1>필리핀: 보홀편(Bohol Province)</h1>
+        &nbsp;
+        <h2>22.10.01~22.10.04</h2>
+      </div>
+      <div class="header_left">
+        SALA NEWS
+        <p class="before" &nbsp;>
+          &nbsp;이전 여행(싱가포르) 보기&nbsp;
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-airplane"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z"
+            />
+          </svg>
+        </p>
+      </div>
+      <div class="header_right">
+        BUY ME A COFFEE
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-emoji-kiss"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12.493 13.368a7 7 0 1 1 2.489-4.858c.344.033.68.147.975.328a8 8 0 1 0-2.654 5.152 8.58 8.58 0 0 1-.81-.622Zm-3.731-3.22a13 13 0 0 0-1.107.318.5.5 0 1 1-.31-.95c.38-.125.802-.254 1.192-.343.37-.086.78-.153 1.103-.108.16.022.394.085.561.286.188.226.187.497.131.705a1.892 1.892 0 0 1-.31.593c-.077.107-.168.22-.275.343.107.124.199.24.276.347.142.197.256.397.31.595.055.208.056.479-.132.706-.168.2-.404.262-.563.284-.323.043-.733-.027-1.102-.113a14.87 14.87 0 0 1-1.191-.345.5.5 0 1 1 .31-.95c.371.12.761.24 1.109.321.176.041.325.069.446.084a5.609 5.609 0 0 0-.502-.584.5.5 0 0 1 .002-.695 5.52 5.52 0 0 0 .5-.577 4.465 4.465 0 0 0-.448.082Zm.766-.087-.003-.001-.003-.001c.004 0 .006.002.006.002Zm.002 1.867-.006.001a.038.038 0 0 1 .006-.002ZM6 8c.552 0 1-.672 1-1.5S6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8Zm2.757-.563a.5.5 0 0 0 .68-.194.934.934 0 0 1 .813-.493c.339 0 .645.19.813.493a.5.5 0 0 0 .874-.486A1.934 1.934 0 0 0 10.25 5.75c-.73 0-1.356.412-1.687 1.007a.5.5 0 0 0 .194.68ZM14 9.828c1.11-1.14 3.884.856 0 3.422-3.884-2.566-1.11-4.562 0-3.421Z"
+          />
+        </svg>
+      </div>
+
+      <!-- NAV 부분 -->
+      <div class="nav">
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <span><b>관광(Sightseeing)</b></span>
+        <span><b>휴양(Rest)</b></span>
+        <span><b>음식(Food)</b></span>
+        <span><b>쇼핑(Shopping)</b></span>
+        <form class="sr">
+          <input
+            class="search"
+            type="search"
+            placeholder="Search for other things"
+            aria-label="Search"
+          />
+          <button class="btn" type="submot">Search</button>
+        </form>
+      </div>
+
+      <!-- MENU부분 -->
+      <div class="menu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-reception-4"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-8zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-11z"
+          /></svg
+        >&nbsp;여행 포인트별 만족도<br />
+        <p class="score">&nbsp;관광&nbsp;★</p>
+        <p class="score_best">&nbsp;휴양&nbsp;★★★</p>
+        <p class="score">&nbsp;음식&nbsp;★</p>
+        <p class="score_worst">&nbsp;쇼핑&nbsp;☆</p>
+      </div>
+      <div class="menu_bottom">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/5NYx4P-E5FU"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- MAIN 부분 -->
+      <div class="main">
+        <span class="articles">The SHOCKING ARTICLES ㅣ .....</span><br />
+        <div class="main_news1">
+          <strong>최씨 입국 후 코로나 양성으로 밝혀져...</strong><br />
+          2022-10<br /><br />
+          한국 입국 전 신속항원 검사와<br />
+          입국 후 PCR 검사 폐지가 되었습니다.<br />
+          이에 최씨는 검사를 하지 않았는데<br />
+          몸이 안 좋아져, 자가진단키트 중에<br />
+          양성임이 밝혀졌습니다...
+        </div>
+        <div class="main_news2">
+          <strong>보홀 여기저기 한국어!</strong><br />
+          2022-10<br /><br />
+          영어 쓰는 나라에서 한국어가 들린다?!<br />
+          호객꾼들은 반딧불 반딧불 유 원트<br />
+          마사지 샵에서는 세게, 중간 잡아! <br />
+          공항에서는 수화물..<br />
+          보홀에서는 더이상 영어 걱정은 NO!<br />
+        </div>
+        <br /><br />
+        <hr />
+        SALA 투어 →
+        <hr />
+        <div class="a">
+          오이 싫어요 고양이
+          <img class="cat_img" src="cat.png" height="100px" />
+        </div>
+        <div class="b">
+          초근접 안경원숭이
+          <img class="monkey_img" src="monkey.jpg" height="100px" />
+        </div>
+        <div class="c">
+          졸리비 강아지
+          <img class="dog_img" src="dog.jpg" height="100px" />
+        </div>
+        <div class="d">
+          반딧불
+          <img class="firefly_img" src="firefly.jpg" height="100px" />
+        </div>
+        <div class="e">
+          안맞는 필핀음식
+          <img class="food_img" src="food.jpg" height="100px" />
+        </div>
+      </div>
+
+      <!-- TOP 부분 -->
+      <div class="top">
+        &emsp;&emsp;&emsp;&emsp;&emsp;
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-binoculars"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V2.5zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5h-1zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V4zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V3zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14z"
+          />
+        </svg>
+        WANTED<br />
+        &nbsp;&nbsp;&nbsp;해외여행 함께할 사람을 찾습니다.<br />
+        &nbsp;&nbsp;&nbsp;- 지불액: 가이드 경비 인당 $40<br />
+        &nbsp;&nbsp;&nbsp;- 이외 혜택: 마사지 2회<br />
+
+        <!-- ASIDE 부분 -->
+      </div>
+      <div class="aside"></div>
+
+      <!-- BOTTOM 부분 -->
+      <div class="bottom">
+        &emsp;&nbsp;<u>*이외 기타 보홀관련 문의</u><br />&emsp;&nbsp;
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-telephone-plus"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M12.5 1a.5.5 0 0 1 .5.5V3h1.5a.5.5 0 0 1 0 1H13v1.5a.5.5 0 0 1-1 0V4h-1.5a.5.5 0 0 1 0-1H12V1.5a.5.5 0 0 1 .5-.5z"
+          />
+        </svg>
+        전화: <a href="tel:010-5359-4747" title="Call Me!">+82-10-5359-4747</a
+        ><br />&emsp;&nbsp;
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-envelope-check"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"
+          />
+          <path
+            d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"
+          />
+        </svg>
+        메일:
+        <a href="mailto:fktkchl@naver" title="Email Me!">fktkchl@naver.com</a
+        ><br />&emsp;&nbsp;
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-chat-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"
+          />
+        </svg>
+        카톡: <a href="#" title="Text Me!">fktkchl</a>
+      </div>
+
+      <!-- FOOTER 부분 -->
+      <div class="footer">© 2022 TRIP TO HEAVEN by SALA CHOI</div>
+    </div>
+  </body>
+</html>
